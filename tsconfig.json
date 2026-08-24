@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true, // 严格检查索引访问
+    "exactOptionalPropertyTypes": true, // 严格检查可选属性类型
+
+    "noEmit": true, // 不生成输出文件
+    "skipLibCheck": true // 跳过库文件检查
+  },
+  "include": ["src/**/*.ts"]
+}
