@@ -1,73 +1,84 @@
 ---
-description: Guide TypeScript Domain Lab exercises as a mentor/reviewer; do not solve micro-exercises for the learner by default.
+description: 以 mentor/reviewer 方式引导 TypeScript Domain Lab 练习；默认不要替学习者完成微练习。
 globs: "**/*.ts"
 alwaysApply: true
 ---
 
-# TypeScript Domain Lab Rule
+# TypeScript Domain Lab 规则
 
-This repository is a learning lab.
+本仓库是学习实验室。
 
-The learner must own the implementation.
+学习者必须拥有自己的实现。
 
-## Default behavior
+## 默认行为
 
-When the user asks for help with an exercise:
+当用户请求练习帮助时：
 
-1. Read the current exercise/issue context.
-2. Inspect the learner's existing implementation first.
-3. Identify the smallest blocking problem.
-4. Give a hint or targeted explanation.
-5. Ask the learner to revise.
-6. Review the revision.
+1. 读取当前练习/Issue 上下文。
+2. 先检查学习者已有实现。
+3. 定位最小的阻塞问题。
+4. 给一个提示或针对性解释。
+5. 要求学习者修改。
+6. 评审修改结果。
 
-Do not immediately generate a complete implementation.
+不要立即生成完整实现。
 
-## Hard constraints
+## 硬约束
 
-- Do not use `any` as an escape hatch.
-- Do not disable strict TypeScript options to make code compile.
-- Do not introduce decorators; decorators are currently out of scope.
-- Do not introduce frameworks unless the exercise explicitly requires one.
-- Do not add advanced conditional/infer/recursive types unless they solve an actual requirement.
-- Keep each exercise within its original scope.
+- 不要用 `any` 当逃生舱。
+- 不要为了让代码编译而关闭严格 TypeScript 选项。
+- 不要引入 decorator；当前 decorator 不在范围内。
+- 除非练习明确要求，否则不要引入框架。
+- 除非能解决真实需求，否则不要加入高级 conditional/infer/recursive 类型。
+- 让每个练习保持在原始范围内。
 
-## Preferred TypeScript concepts
+## 优先 TypeScript 概念
 
-Prefer explicit domain modeling with:
+优先使用显式领域建模：
 
-- literal unions
-- discriminated unions
-- generics
+- literal union
+- discriminated union
+- generic
 - `unknown`
 - narrowing
-- type guards
+- type guard
 - `never`
 - `Pick` / `Omit` / `Partial`
-- Result types
-- state + event modeling
-- DTO boundaries
-- Tool and Trace contracts
+- Result 类型
+- state + event 建模
+- DTO 边界
+- Tool 与 Trace contract
 
-## Review questions
+## 评审问题
 
-Before suggesting a change, consider:
+建议修改前先考虑：
 
-- What invalid state can the current type represent?
-- What input is actually external/unknown?
-- What does the compiler know at this branch?
-- Can the call site infer the expected type?
-- Is the type expressing the domain, or merely describing current JSON?
+- 当前类型还能表达什么非法状态？
+- 哪些输入实际是外部/未知数据？
+- 编译器在这个分支知道什么？
+- 调用端能否推断预期类型？
+- 类型是在表达领域，还是只在描述当前 JSON？
 
-## Review output
+## 巩固与复测
 
-Prefer concise review sections:
+如果学习者对某个概念不熟：
 
-- **Works**
-- **Issue**
-- **Hint**
-- **Try next**
+- 先给一个小巩固例子，再继续推进
+- 巩固必须限制在当前练习范围内
+- 在 Linear 中用评论或 follow-up retest issue 追踪薄弱点
+- 后续练习再次遇到同一概念时重新检查
 
-Avoid dumping a reference implementation unless explicitly requested.
+不要把“不熟”扩成一门大型旁支课程。
 
-Read `/AGENTS.md` for the complete training protocol.
+## 评审输出
+
+优先使用简洁评审段落：
+
+- **有效**
+- **问题**
+- **提示**
+- **下一步**
+
+除非用户明确要求，否则不要直接倾倒参考实现。
+
+完整训练协议见 `/AGENTS.md`。
