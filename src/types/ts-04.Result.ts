@@ -87,7 +87,7 @@ function parseUserResult(input: unknown): Result<User, SomeError> {
         value: data.value,
       };
     }
-  } else {
+  } else if (data.ok === false) {
     if (isSomeError(data.error)) {
       return {
         ok: false,
@@ -97,3 +97,16 @@ function parseUserResult(input: unknown): Result<User, SomeError> {
   }
   return invalid("ok 不是 true/false");
 }
+
+/**
+ * 领域模型
+ * 先写出“什么情况下，必须有什么、不能有什么”，再定义类型。
+ * 比如查询用户：
+  - 成功时，必须有用户信息，不能拿错误信息充数。
+  - 失败时，必须有错误原因，不能假装查到了用户。
+  实际建模时，依次问自己：
+  1. 有哪些情况？ 成功、失败。
+  2. 每种情况必须带什么？ 成功带用户，失败带错误。
+  3. 哪些组合不合理？ 说成功却没有用户。
+  4. 我的类型和入口检查，能不能拦住这些不合理的组合？
+ */
